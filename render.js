@@ -16,6 +16,10 @@ var set_dimensions = function(dim_text) {
     );
 };
 
+var state_online_readership(total) {
+    var div = $("<div>Total online readers: " + total + "</div>");
+};
+
 var lookup_dimensions = function(doi) {
     var url = "http://obp.ucant.org/public/book/metadata.json?doi=" + doi;
     $.ajax({
@@ -24,6 +28,7 @@ var lookup_dimensions = function(doi) {
     }).done(function(results) {
         console.log(results);
         set_dimensions(results.dimensions);
+        state_online_readership(results.total_online_readers);
     })
 };
 
