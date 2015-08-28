@@ -33,9 +33,8 @@ var lookup_dimensions = function(doi) {
     })
 };
 
-var loadUser = function() {
-    var template = $('#template').html();
-    Mustache.parse(template);
-    var rendered = Mustache.render(template, {fname: "Luke"});
-    $('#target').html(rendered);
-};
+$(document).ready(function() {
+    var doi = get_short_doi();
+    console.log("DOI" : doi);
+    lookup_dimensions(doi);
+});
