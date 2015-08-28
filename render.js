@@ -16,7 +16,7 @@ var set_dimensions = function(dim_text) {
     );
 };
 
-var state_online_readership(total) {
+var state_online_readership = function(total) {
     var div = $("<div>Total online readers: " + total + "</div>");
     $("#report_total_readers").append(div);
 };
