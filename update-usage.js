@@ -15,11 +15,12 @@
   };
 
   var state_online_readership = function(total) {
-    var div = "<div>Total online readers: " + total + "</div>";
+    var div = "<div>Since publication, this book has been viewed "
+          + total + " times.</div>";
     $("#description").append(div);
   };
 
-  var lookup_dimensions = function(doi) {
+  var lookup_metadata = function(doi) {
     var url = "http://obp.ucant.org/public/book/metadata.json?doi=" + doi;
     $.ajax({
       url: url,
@@ -32,7 +33,7 @@
   $(document).ready(function() {
     var doi = get_short_doi();
     if(doi !== "") {
-      lookup_dimensions(doi);
+      lookup_metadata(doi);
     }
   });
 })();
