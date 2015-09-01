@@ -14,9 +14,14 @@
     return $("meta[scheme=DOI][name=DC.identifier]").first().attr("content");
   };
 
+  // via StackOverflow
+  var numberWithCommas = function(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  };
+
   var state_online_readership = function(total) {
     var div = "<div>Since publication, this book has been viewed "
-          + total + " times.</div>";
+          + numberWithCommas(total) + " times.</div>";
     $("#description").append(div);
   };
 
