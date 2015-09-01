@@ -1,3 +1,5 @@
+// A quick tool to update the usage stats for books on the OBP website
+
 (function() {
   var get_short_doi = function() {
     return $("meta[scheme=DOI][name=DC.identifier]").first().attr("content");
