@@ -22,7 +22,7 @@
   var state_online_readership = function(total) {
     var div = "<div>Since publication, this book has been viewed "
           + numberWithCommas(total) + " times.</div>";
-    $("#description").append(div);
+    $("#description").prepend(div);
   };
 
   var lookup_metadata = function(doi) {
