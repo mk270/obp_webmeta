@@ -20,6 +20,9 @@
   };
 
   var state_online_readership = function(total) {
+    if(total <= 1) {
+        return;
+    }
     var div = "<div>Since publication, this book has been viewed "
           + numberWithCommas(total) + " times.</div>";
     $("#description").prepend(div);
