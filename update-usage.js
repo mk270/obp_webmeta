@@ -27,8 +27,8 @@
         doi;
 
     var div = "<div>Since publication, this book has been viewed " +
-        numberWithCommas(total) + " times. " +
-        "<a href=\"" + url + "\">[Details]</a>" + "</div>";
+        numberWithCommas(total) + " times " +
+        "<a href=\"" + url + "\">(details).</a>" + "</div>";
     $("#description").prepend(div);
   };
 
