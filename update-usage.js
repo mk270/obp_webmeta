@@ -19,12 +19,16 @@
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   };
 
-  var state_online_readership = function(total) {
+  var state_online_readership = function(doi, total) {
     if(total <= 1) {
         return;
     }
-    var div = "<div>Since publication, this book has been viewed "
-          + numberWithCommas(total) + " times.</div>";
+    var url = "http://obp.ucant.org/static/map/book-countries.html?doi=" +
+        doi;
+
+    var div = "<div>Since publication, this book has been viewed " +
+        numberWithCommas(total) + " times. " +
+        "<a href=\"" + url + "\">[Details]</a>." + "</div>";
     $("#description").prepend(div);
   };
 
@@ -34,7 +38,7 @@
       url: url,
       dataType: "json"
     }).done(function(results) {
-      state_online_readership(results.total_online_readers);
+      state_online_readership(doi, results.total_online_readers);
     })
   };
 
