@@ -28,7 +28,7 @@
 
     var div = "<div>Since publication, this book has been viewed " +
         numberWithCommas(total) + " times " +
-        "<a href=\"" + url + "\">(details).</a>" + "</div>";
+        "(<a href=\"" + url + "\">details</a>).</div>";
     $("#description").prepend(div);
   };
 
