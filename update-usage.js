@@ -10,7 +10,7 @@
 */
 
 (function() {
-  var hostname = "obp.ucant.org";
+  var hostname = "data.openbookpublishers.com";
   var url_base = "http://" + hostname;
 
   var get_short_doi = function() {
