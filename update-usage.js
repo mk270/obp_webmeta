@@ -10,6 +10,9 @@
 */
 
 (function() {
+  var hostname = "obp.ucant.org";
+  var url_base = "http://" + hostname;
+
   var get_short_doi = function() {
     return $("meta[scheme=DOI][name=DC.identifier]").first().attr("content");
   };
@@ -23,8 +26,7 @@
     if(total <= 1) {
         return;
     }
-    var url = "http://obp.ucant.org/static/map/book-countries.html?doi=" +
-        doi;
+    var url = url_base + "/static/map/book-countries.html?doi=" + doi;
 
     var div = "<div>Since publication, this book has been viewed " +
         numberWithCommas(total) + " times " +
@@ -33,7 +35,7 @@
   };
 
   var lookup_metadata = function(doi) {
-    var url = "http://obp.ucant.org/public/book/metadata.json?doi=" + doi;
+    var url = url_base + "/public/book/metadata.json?doi=" + doi;
     $.ajax({
       url: url,
       dataType: "json"
