@@ -10,7 +10,7 @@
 */
 
 (function() {
-  var hostname = "data.openbookpublishers.com";
+  var hostname = "squam.maths.cam.ac.uk";
   var url_base = "http://" + hostname;
 
   var get_short_doi = function() {
