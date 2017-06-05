@@ -10,8 +10,8 @@
 */
 
 (function() {
-  var hostname = "squam.maths.cam.ac.uk";
-  var url_base = "http://" + hostname;
+  var hostname = "data.openbookpublishers.com";
+  var url_base = "https://" + hostname;
 
   var get_short_doi = function() {
     return $("meta[scheme=DOI][name=DC.identifier]").first().attr("content");
