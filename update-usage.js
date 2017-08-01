@@ -28,7 +28,7 @@
     }
     var url = url_base + "/static/map/book-countries.html?doi=" + doi;
 
-    var div = "<div>Since publication, this book has been viewed " +
+    var div = "<div>Since publication, this book has been viewed for free " +
         numberWithCommas(total) + " times " +
         "(<a href=\"" + url + "\">details</a>).</div>";
     $("#description").prepend(div);
