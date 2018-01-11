@@ -10,8 +10,8 @@
 */
 
 (function() {
-  var hostname = "data.openbookpublishers.com";
-  var url_base = "https://" + hostname;
+  var reports_url_base = "//reports.openbookpublishers.com";
+  var url_base = "//data.openbookpublishers.com";
 
   var get_short_doi = function() {
     return $("meta[scheme=DOI][name=DC.identifier]").first().attr("content");
@@ -26,7 +26,7 @@
     if(total <= 1) {
         return;
     }
-    var url = url_base + "/static/map/book-countries.html?doi=" + doi;
+    var url = reports_url_base + "/public/report/" + doi;
 
     var div = "<div>Since publication, this book has been viewed for free " +
         numberWithCommas(total) + " times " +
