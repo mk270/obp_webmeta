@@ -11,46 +11,23 @@
 
 (function() {
   var reports_url_base = "//reports.openbookpublishers.com";
-  var url_base = "//metrics.api.openbookpublishers.com";
 
   var get_short_doi = function() {
     return $("meta[scheme=DOI][name=DC.identifier]").first().attr("content");
   };
 
-  var state_online_readership = function(doi, noOfPlatforms, noOfCountries) {
-    var url = reports_url_base + "/public/report/" + doi;
-    var platforms = noOfPlatforms + " platforms";
-    var countries = noOfCountries + " countries";
-    var div = "<div>Since publication, this book has been read for free in at least ";
-
-    if (noOfPlatforms >= 1 && noOfCountries >= 1) {
-        div += platforms + " and " + countries;
-    } else if (noOfPlatforms >= 1 && noOfCountries == 0) {
-        div += platforms;
-    } else if (noOfPlatforms >= 1 && noOfCountries == 0) {
-        div += countries;
-    } else {
-        return;
-    }
-    div += " (<a href=\"" + url + "\">details</a>).</div>";
+  var state_online_readership = function(url) {
+    var div = "<div>To see how this book has been read around the world ";
+    div += " <a href=\"" + url + "\">click here</a>.</div>";
     $("#description").prepend(div);
   };
 
   var lookup_metadata = function(doi) {
-    var url = url_base + "/events?filter=work_uri:info:doi:" + doi;
-    var countryUrl = url + "&aggregation=country_uri,measure_uri";
-    var measureUrl = url + "&aggregation=measure_uri";
+    var url = reports_url_base + "/public/report/" + doi;
     $.ajax({
-      url: countryUrl,
-      dataType: "json"
-    }).done(function(countryResults) {
-        $.ajax({
-          url: measureUrl,
-          dataType: "json"
-        }).done(function(measureResults) {
-            state_online_readership(doi, measureResults.count,
-                                    countryResults.count);
-        })
+      url: url,
+    }).done(function() {
+      state_online_readership(url);
     })
   };
 
