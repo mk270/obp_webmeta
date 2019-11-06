@@ -25,6 +25,7 @@
   var lookup_metadata = function(doi) {
     var url = reports_url_base + "/public/report/" + doi;
     $.ajax({
+      type: 'HEAD',
       url: url,
     }).done(function() {
       state_online_readership(url);
