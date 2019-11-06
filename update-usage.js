@@ -11,6 +11,7 @@
 
 (function() {
   var reports_url_base = "//reports.openbookpublishers.com";
+  var api_url_base = "//data.openbookpublishers.com";
 
   var get_short_doi = function() {
     return $("meta[scheme=DOI][name=DC.identifier]").first().attr("content");
@@ -23,12 +24,15 @@
   };
 
   var lookup_metadata = function(doi) {
-    var url = reports_url_base + "/public/report/" + doi;
+    var metadata_url = api_url_base + "/public/book/metadata.json?doi=" + doi;
     $.ajax({
-      type: 'HEAD',
-      url: url,
-    }).done(function() {
-      state_online_readership(url);
+      url: metadata_url,
+      dataType: "json"
+    }).done(function(results) {
+      if (results.publication_date != null) {
+        var report_url = reports_url_base + "/public/report/" + doi;
+        state_online_readership(report_url);
+      }
     })
   };
 
